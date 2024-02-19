@@ -1,0 +1,36 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: proxy-policy
+  namespace: test-allow
+spec:
+  endpointSelector: {}
+  egress:
+    - toFQDNs:
+        - matchPattern: "*.roche.com"
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+            - port: "80"
+              protocol: TCP
+          listener:
+            envoyConfig:
+              kind: "CiliumEnvoyConfig"
+              name: "proxy-envoy"
+            name: "proxy-listener"
+    - toEndpoints:
+        - {}
+    - toEntities:
+        - cluster
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
