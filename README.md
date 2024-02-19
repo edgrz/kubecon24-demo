@@ -1,6 +1,8 @@
 # [Demo] Meshing it Up Securely: How Roche Manages Network Connectivity for 1000+ Edge Clusters
 
-This repository contains the code for this demo presented at KubeCon 2024 by [Roche](https://www.roche.com/).
+This repository contains the code for this [demo](https://sessionize.com/s/hector-monsalve/meshing-it-up-securely-how-roche-manages-network-c/81156) presented at KubeCon 2024 by [Roche](https://www.roche.com/).
+
+Authors: [@edgrz](https://github.com/edgrz) [@hmonsalv](https://github.com/hmonsalv)
 
 ## What is this demo about?
 
