@@ -140,10 +140,10 @@ This time you should get an HTTP `200` response, meaning that the request was su
 > **INFO:** in this case, the `CiliumNetworkPolicy` not only allows the traffic to `www.roche.com` but also instead of sending it to the linux networking stack, redirects it to the envoy listener defined in the `CiliumEnvoyConfig`, and there envoy routes the traffic to the proxy running on `kubecon-proxy-demo` EC2 instance using `HTTP CONNECT` method.
 
 Move back to the terminal where you are monitoring the logs of the HTTP proxy.
-You should see a log message for the request that the proxy received and routed to `www.roche.com`, similar to this:
+You should see a log message for the request that the proxy received and routed to the CDN IP behind `www.roche.com`, similar to this:
 
 ```logs
-{"time_unix":1707585823, "proxy":{"type:":"PROXY", "port":3128}, "error":{"code":"00000"}, "auth":{"user":"-"}, "client":{"ip":"3.123.33.107", "port":38522}, "server":{"ip":"142.250.185.228", "port":443}, "bytes":{"sent":844, "received":5871}, "request":{"hostname":"142.250.185.228"}, "message":"CONNECT 142.250.185.228:443 HTTP/1.1"}
+{"time_unix":1707585823, "proxy":{"type:":"PROXY", "port":3128}, "error":{"code":"00000"}, "auth":{"user":"-"}, "client":{"ip":"3.123.33.107", "port":38522}, "server":{"ip":"xxx.xxx.xxx.xxx", "port":443}, "bytes":{"sent":844, "received":5871}, "request":{"hostname":"xxx.xxx.xxx.xxx"}, "message":"CONNECT xxx.xxx.xxx.xxx:443 HTTP/1.1"}
 ```
 
 ## Clean up

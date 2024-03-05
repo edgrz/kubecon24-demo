@@ -4,6 +4,12 @@ variable "env_name" {
   default     = "demo"
 }
 
+variable "cidr" {
+  description = "The CIDR to be used for the VPC."
+  type        = string
+  default     = "10.0.0.0/16"
+}
+
 locals {
   machine_kind_name  = "kubecon-kind-${var.env_name}"
   machine_proxy_name = "kubecon-proxy-${var.env_name}"
@@ -13,7 +19,7 @@ locals {
 
 # get my poublic ip to configure EC2 SG (incoming) via SSH
 data "http" "myip" {
-  url = "http://ifconfig.me"
+  url = "http://checkip.amazonaws.com"
 }
 
 # AMI

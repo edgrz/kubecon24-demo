@@ -19,8 +19,6 @@ spec:
               kind: "CiliumEnvoyConfig"
               name: "proxy-envoy"
             name: "proxy-listener"
-    - toEndpoints:
-        - {}
     - toEntities:
         - cluster
     - toEndpoints:
@@ -30,7 +28,7 @@ spec:
       toPorts:
         - ports:
             - port: "53"
-              protocol: UDP
+              protocol: ANY
           rules:
             dns:
               - matchPattern: "*"
