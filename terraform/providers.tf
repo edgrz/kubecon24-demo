@@ -16,6 +16,6 @@ terraform {
 }
 
 provider "aws" {
-  # add here provider configuration if needed
-
+  # add/change provider configuration here, if needed
+  region = "eu-central-1"
 }
